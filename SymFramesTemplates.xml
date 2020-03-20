@@ -1,0 +1,144 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Frame name="SymFramesSliderTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="250" y="50"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOP">
+                <Offset x="0" y="-85"/>
+            </Anchor>
+        </Anchors>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString name="$parent_Title" parentKey="title"
+                    inherits="GameFontNormal" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="20"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+            <!-- <Layer level="BACKGROUND"> -->
+            <!--     <Texture name="$parent_BG" parentKey="BG"> -->
+            <!--         <Color r="0.0" g="0.0" b="0.75"/> -->
+            <!--     </Texture> -->
+            <!-- </Layer> -->
+        </Layers>
+
+        <Frames>
+
+            <Slider name="$parent_Slider" inherits="OptionsSliderTemplate" parentKey="slider"
+                    minValue="-800.0" maxValue="800.0" defaultValue="0.0">
+                <Size>
+                    <AbsDimension x="200" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="TOP"/>
+                </Anchors>
+                <Scripts>
+                    <OnValueChanged>
+                        SymFrames_SliderValueChanged(self, value)
+                    </OnValueChanged>
+                </Scripts>
+            </Slider>
+
+            <Editbox name="$parent_Editbox" inherits="InputBoxTemplate" parentKey="editbox"
+                     numeric="false" autoFocus="false">
+                <Size>
+                    <AbsDimension x="40" y="35"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM"/>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        SymFrames_EditBoxEnterPressed(self)
+                    </OnEnterPressed>
+                    <OnEscapePressed>
+                        SymFrames_EditBoxEscPressed(self)
+                    </OnEscapePressed>
+                </Scripts>
+            </Editbox>
+
+            <Button name="$parent_LButton" parentKey="LB">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+                        <Offset x="25" y="5"/>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parent_BG" parentKey="BG" file="Interface\Buttons\UI-MinusButton-Up">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnMouseDown>
+                        SymFrames_LButtonDown(self, button)
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        SymFrames_LButtonUp(self, button)
+                    </OnMouseUp>
+                    <PostClick>
+                        SymFrames_LButtonPostClick(self, button, down)
+                    </PostClick>
+                </Scripts>
+            </Button>
+
+            <Button name="$parent_RButton" parentKey="RB">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+                        <Offset x="-25" y="5"/>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture name="$parent_BG" parentKey="BG" file="Interface\Buttons\UI-PlusButton-Up">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnMouseDown>
+                        SymFrames_RButtonDown(self, button)
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        SymFrames_RButtonUp(self, button)
+                    </OnMouseUp>
+                    <PostClick>
+                        SymFrames_RButtonPostClick(self, button, down)
+                    </PostClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Button name="SymFramesButtonTemplate" virtual="true" inherits="UIPanelButtonTemplate">
+        <Size>
+            <AbsDimension x="150" y="30"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativePoint="BOTTOM">
+                <Offset x="0" y="-30"/>
+            </Anchor>
+        </Anchors>
+    </Button>
+
+    <Frame name="SymFramesPanelTemplate" virtual="true">
+        <Scripts>
+            <OnLoad>
+                SymFrames_SetupOptionsPanel(self)
+            </OnLoad>
+        </Scripts>
+    </Frame>
+</Ui>

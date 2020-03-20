@@ -1,0 +1,9 @@
+## Interface: 80200
+## Title: SymFrames
+## Author: Evan Savillo
+## Notes:
+## SavedVariables: SymFrames_vars
+
+SymFramesTemplates.lua
+SymFramesTemplates.xml
+SymFrames.lua
