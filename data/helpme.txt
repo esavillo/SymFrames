@@ -1,0 +1,1 @@
+Create a .tga image and name it goof.tga if you want. Also uncomment relevant code.
